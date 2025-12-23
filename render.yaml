@@ -17,5 +17,5 @@ services:
         value: "3030"
     healthCheckPath: /ui
     region: oregon
-    instanceType: starter
-    replicas: 1
+    # instanceType: starter
+    # replicas: 1
