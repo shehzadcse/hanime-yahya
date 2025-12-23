@@ -1,0 +1,21 @@
+# Render service definition for hanime-yahya
+# Adjust branch/region/instanceType as needed in the Render dashboard
+services:
+  - type: web
+    name: hanime-yahya
+    env: node
+    branch: main
+    autoDeploy: true
+    buildCommand: |
+      # Install Bun for build/runtime and install dependencies
+      curl -fsSL https://bun.sh/install | bash -s -- -y
+      export PATH="$HOME/.bun/bin:$PATH"
+      bun install
+    startCommand: $HOME/.bun/bin/bun index.js
+    envVars:
+      - key: PORT
+        value: "3030"
+    healthCheckPath: /ui
+    region: oregon
+    instanceType: starter
+    replicas: 1
